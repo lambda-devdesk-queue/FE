@@ -1,0 +1,19 @@
+{
+    "stuff": "...",
+    "scripts": {
+      "postinstall": "run-p DevDesk-Queue-BE install:front-end",
+      "install:DevDesk-Queue-BE": "cd DevDesk-Queue-BE && yarn install",
+      "install:front-end": "cd front-end && yarn install",
+  
+      "start": "run-p start:DevDesk-Queue-BE start:front-end",
+      "start:DevDesk-Queue-BE": "npm run start --prefix DevDesk-Queue-BE",
+      "start:front-end": "npm run start --prefix front-end",
+  
+      "build": "run-p build:DevDesk-Queue-BE build:front-end",
+      "build:DevDesk-Queue-BE": "cd DevDesk-Queue-BE && npm run build",
+      "build:front-end": "cd front-end && npm run build"
+    },
+    "devDependencies": {
+      "npm-run-all": "^4.0.2"
+    }
+  }
