@@ -36,7 +36,7 @@
 
 .side-menu a:hover,
 .side-menu a:active {
-    color:orange;
+    color:#258EA6;
 }
 
 @media (min-width: 769px) {

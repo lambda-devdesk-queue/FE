@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    background: #adff2f;
+    background: white;
     height: 56px;
 }
 
@@ -16,12 +16,16 @@
 
 .navbar_logo {
     margin-left: 1rem;
-}
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+
+    }
 
 .navbar_logo a {
-    color: white;
+    /* color: white;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.5rem; */
 }
 
 .spacer {
@@ -40,13 +44,13 @@
 }
 
 .navbar_menu a {
-    color: white;
+    color: #258EA6;
     text-decoration: none;
 }
 
 .navbar_menu a:hover,
 .navbar_menu a:active {
-    color: orange;
+    color: #adff2f;
 }
 
 @media (max-width: 768px) {

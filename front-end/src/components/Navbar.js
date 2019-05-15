@@ -2,6 +2,7 @@ import React from 'react';
 
 import Sidetoggle from '../components/Sidetoggle';
 import './Navbar.css';
+import logo from '../assets/LOGO2.png';
 
 const navbar = props => (
     <header className="navbar">
@@ -9,7 +10,10 @@ const navbar = props => (
     <div className="navbar_toggle">
         <Sidetoggle click={props.sideClickHandler}/>
       </div>
-      <div className="navbar_logo"><a href="/">LOGO PLACEMENT</a></div>
+      <div className="navbar_logo">
+      <a href="/" alt="logo"></a>
+      <img src={logo} alt="logo" />
+      </div>
       <div className="spacer" />
       <div className="navbar_menu">
         <ul>
