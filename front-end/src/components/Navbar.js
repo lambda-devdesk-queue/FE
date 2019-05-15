@@ -1,5 +1,4 @@
 import React from 'react';
-
 import Sidetoggle from '../components/Sidetoggle';
 import './Navbar.css';
 import logo from '../assets/LOGO2.png';
@@ -17,8 +16,8 @@ const navbar = props => (
       <div className="spacer" />
       <div className="navbar_menu">
         <ul>
-          <li> <a href="/">Students</a> </li>
-          <li> <a href="/">Admins</a></li>
+          <li> <a href="/students">Students</a> </li>
+          <li> <a href="/admins">Admins</a></li>
         </ul>
       </div>
     </nav>

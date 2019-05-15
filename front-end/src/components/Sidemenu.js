@@ -10,8 +10,8 @@ const sideMenu = props => {
     return (
     <nav className={menuClasses}>
         <ul>
-            <li><a href="/">Products</a></li>
-            <li><a href="/">Users</a></li>
+            <li><a href="/students">Students</a></li>
+            <li><a href="/admins">Admins</a></li>
         </ul>
     </nav>
     );
