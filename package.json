@@ -1,19 +1,19 @@
 {
     "stuff": "...",
     "scripts": {
-      "postinstall": "run-p DevDesk-Queue-BE install:front-end",
-      "install:DevDesk-Queue-BE": "cd DevDesk-Queue-BE && yarn install",
-      "install:front-end": "cd front-end && yarn install",
-  
-      "start": "run-p start:DevDesk-Queue-BE start:front-end",
-      "start:DevDesk-Queue-BE": "npm run start --prefix DevDesk-Queue-BE",
-      "start:front-end": "npm run start --prefix front-end",
-  
-      "build": "run-p build:DevDesk-Queue-BE build:front-end",
-      "build:DevDesk-Queue-BE": "cd DevDesk-Queue-BE && npm run build",
-      "build:front-end": "cd front-end && npm run build"
+        "client-install": "npm install --prefix client",
+        "start": "node server.js",
+        "server": "nodemon server.js",
+        "client": "npm start --prefix client",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
     },
-    "devDependencies": {
-      "npm-run-all": "^4.0.2"
+    "dependencies": {
+        "axios": "^0.18.0",
+        "classnames": "^2.2.6",
+        "jwt-decode": "^2.2.0",
+        "react-redux": "^7.0.3",
+        "react-router-dom": "^5.0.0",
+        "redux": "^4.0.1",
+        "redux-thunk": "^2.3.0"
     }
-  }
+}
