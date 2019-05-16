@@ -98,10 +98,7 @@ class Form extends Component {
     this.setState({formErrors, [name]: value}, () => console.log(this.state))
   };
 
-  async componentDidMount() {
-    const {data} = await Axios.get('/api/todos')
-    this.setState({toDoItems: data})
-   }
+
 
 
   render() {

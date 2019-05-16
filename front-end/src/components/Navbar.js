@@ -10,8 +10,7 @@ const navbar = props => (
         <Sidetoggle click={props.sideClickHandler}/>
       </div>
       <div className="navbar_logo">
-      <a href="https://hopeful-kilby-8fc86d.netlify.com/" alt="logo"></a>
-      <img src={logo} alt="logo" />
+      <a href="https://hopeful-kilby-8fc86d.netlify.com/" alt="logo"><img src={logo} alt="logo" /></a>
       </div>
       <div className="spacer" />
       <div className="navbar_menu">
