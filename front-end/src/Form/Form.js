@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import './Form.css';
+import axios from 'axios';
+var apiBaseUrl = "https://devdeskqueue-be.herokuapp.com/api/";
+
 
 const emailRegex = RegExp(/^[a-zA-Z0-9.!!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9-]+)*$/);
 
@@ -95,7 +98,10 @@ class Form extends Component {
     this.setState({formErrors, [name]: value}, () => console.log(this.state))
   };
 
-  
+  async componentDidMount() {
+    const {data} = await Axios.get('/api/todos')
+    this.setState({toDoItems: data})
+   }
 
 
   render() {
