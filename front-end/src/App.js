@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Form from "./Form/Form";
-import Login from "./Login/Login";
-import LoginAdmin from "./Login/LoginAdmin";
-import Navbar from './components/Navbar';
-import Sidemenu from './components/Sidemenu';
+import Form from "./components/Form/Form";
+import Login from "./components/Login/Login";
+import LoginAdmin from "./components/Login/LoginAdmin";
+import Navbar from './components/Navigation/Navbar';
+import Sidemenu from './components/Navigation/Sidemenu';
 import Background from './components/Background/Background';
 import './App.css'
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Dashboard from './Dashboard/Dashboard';
-import DashboardAdmin from './Dashboard/DashboardAdmin';
+import Dashboard from './components/Dashboard/Dashboard';
+import DashboardAdmin from './components/Dashboard/DashboardAdmin';
 import axios from 'axios';
 import Admins from './components/Users/Admins';
 import Students from './components/Users/Students';

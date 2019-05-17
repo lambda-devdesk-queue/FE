@@ -1,6 +1,6 @@
 import React from 'react';
-import Sidetoggle from '../components/Sidetoggle';
-import './Navbar.css';
+import Sidetoggle from '../Navigation/Sidetoggle';
+import '../Navigation/Navbar.css';
 import logo from '../assets/LOGO2.png';
 
 const navbar = props => (

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import './Form.css';
+import '../Form/Form.css';
 import axios from 'axios';
 const apiEndpoint = 'https://devdeskqueue-be.herokuapp.com/api/';
 

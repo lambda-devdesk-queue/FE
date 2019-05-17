@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './Sidemenu.css';
+import '../Navigation/Sidemenu.css';
 
 const sideMenu = props => {
     let menuClasses = 'side-menu';
