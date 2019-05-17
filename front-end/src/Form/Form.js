@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import './Form.css';
 import axios from 'axios';
-var apiBaseUrl = "https://devdeskqueue-be.herokuapp.com/api/";
-
+const apiEndpoint = 'https://devdeskqueue-be.herokuapp.com/api/';
 
 const emailRegex = RegExp(/^[a-zA-Z0-9.!!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9-]+)*$/);
 
@@ -98,8 +97,38 @@ class Form extends Component {
     this.setState({formErrors, [name]: value}, () => console.log(this.state))
   };
 
+  state = {
+    // sideMenuOpen: false
+    posts: []
+};
 
+async componentDidMount() {
+  const { data: posts } = await axios.get(apiEndpoint);
+  this.setState({ posts });
+}
 
+handleAdd = async () => {
+    const obj = { title: 'a', body: 'b' };
+    const { data: post } = await axios.post(apiEndpoint, obj);
+    const posts = [post, ...this.state.posts];
+    this.setState({ posts });
+};
+
+handleUpdate = async post => {
+    post.title = 'updated title';
+    const { data } = await axios.put(apiEndpoint + '/' + post.id, post);
+    // axios.patch(apiEndpoint + '/' + post.id, {title: post.title});
+    const posts = [...this.state.posts];
+    const index = posts.indexOf(post);
+    posts[index] = post;
+    this.setState({ posts });
+};
+
+handleDelete = async post => {
+    await axios.delete(apiEndpoint + '/' + post.id);
+    const posts = this.state.posts.filter(p => p.id !== post.id);
+    this.setState({ posts });
+};
 
   render() {
     const { formErrors } = this.state;
@@ -172,8 +201,8 @@ class Form extends Component {
                     <span className="errorMessage">{formErrors.password}</span>
                   )}
                 </div>
-                <div className="createAccount">
-                  <button type="submit">Create Account</button>
+                <div className="createAccount" > 
+                  <button type="submit"><a href="/login">Create Account</a></button> 
                   <small> Already Have an Account? <Link to="/login">Login</Link> </small>
                 </div>
             </form>
