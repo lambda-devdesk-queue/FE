@@ -12,6 +12,8 @@ import DashboardAdmin from './components/Dashboard/DashboardAdmin';
 import axios from 'axios';
 import Admins from './components/Users/Admins';
 import Students from './components/Users/Students';
+import TicketApp from "./components/Dashboard/ListItems.js/Ticket";
+import { connect } from 'react-redux';
 const apiEndpoint = 'https://devdeskqueue-be.herokuapp.com/api/';
 
 
@@ -85,6 +87,7 @@ handleDelete = async post => {
         <Route exact path="/dashboardadmin" component={DashboardAdmin} />
         <Route exact path="/admins" component={Admins} />
         <Route exact path="/students" component={Students} />
+        <Route path="/questionlist" component={TicketApp}/>
       </div>
       </Router>
 
@@ -92,4 +95,11 @@ handleDelete = async post => {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  loggedIn: state.loggedIn,
+  token: state.token,
+});
+
+export default connect(
+  mapStateToProps,
+)(App);

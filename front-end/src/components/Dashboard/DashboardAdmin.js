@@ -1,194 +1,74 @@
+import React, { Component } from "react";
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Drawer from '@material-ui/core/Drawer';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import { mainListItems, secondaryListItems } from './list';
-import LineChart from './LineChart';
-import Table from './Table';
+const ProfileList = ({profiles}) => (
+    <select>
+        <option value="-----">----</option>
+        {profiles.map(profile => <option value={profile.name}>{profile.name}</option>)}
+    </select>
+);
 
 
-const drawerWidth = 240;
+class DashboardAdmin extends Component {
 
-const styles = theme => ({
-  root: {
-    display: 'flex',
-  },
-  toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
-  },
-  toolbarIcon: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-  },
-  appBar: {
-    zIndex: theme.zIndex.drawer + 1,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['width', 'margin'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginLeft: 12,
-    marginRight: 36,
-  },
-  menuButtonHidden: {
-    display: 'none',
-  },
-  title: {
-    flexGrow: 1,
-  },
-  drawerPaper: {
-    position: 'relative',
-    whiteSpace: 'nowrap',
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerPaperClose: {
-    overflowX: 'hidden',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    width: theme.spacing.unit * 7,
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 9,
-    },
-  },
-  appBarSpacer: theme.mixins.toolbar,
-  content: {
-    flexGrow: 1,
-    padding: theme.spacing.unit * 3,
-    height: '100vh',
-    overflow: 'auto',
-  },
-  chartContainer: {
-    marginLeft: -22,
-  },
-  tableContainer: {
-    height: 320,
-  },
-  h5: {
-    marginBottom: theme.spacing.unit * 2,
-  },
-});
+    constructor(){
+        super();
+        this.state = {
+            "profiles": [],
+        };
+        this.request_data = {}
+    };
 
-class DashboardAdmin extends React.Component {
-  state = {
-    open: true,
-  };
+    componentDidMount(){
+        fetch("http://localhost:8000/api/profiles/")
+            .then(response => response.json())
+            .then(response => this.setState({ profiles: response}))
+    }
 
-  handleDrawerOpen = () => {
-    this.setState({ open: true });
-  };
+    submit_task(data) {
+        fetch("http://localhost:8000/api/tasks/",
+            {
+                method: "POST",
+                cache: "no-cache",
+                headers:{
+                    "content_type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response=> response.json())
 
-  handleDrawerClose = () => {
-    this.setState({ open: false });
-  };
+    }
 
-  render() {
-    const { classes } = this.props;
+    render() {
+        return (
+            <div>
+                <h2>Submit Job</h2>
+                <form id="submit_job">
+                    <label>
+                        Material ID:
+                        <input type="text" name="material_id"/>
+                    </label>
+                    <br/>
+                    <label>
+                        Transcode Profile:
+                        <ProfileList profiles={this.state.profiles}/>
+                    </label>
+                    <br/>
+                    <label>
+                        Start Date:
+                        <input type="text" name="start_date"/>
+                    </label>
+                    <br/>
+                    <label>
+                        End Date:
+                        <input type="text" name="end_date"/>
+                    </label>
+                    <br/>
+                </form>
+                <button onClick={this.submit_task(this.request_data)}>Submit</button>
+            </div>
 
-    return (
-      <div className={classes.root}>
-        <CssBaseline />
-        <AppBar
-          position="absolute"
-          className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
-        >
-          <Toolbar disableGutters={!this.state.open} className={classes.toolbar}>
-            <IconButton
-              color="inherit"
-              aria-label="Open drawer"
-              onClick={this.handleDrawerOpen}
-              className={classNames(
-                classes.menuButton,
-                this.state.open && classes.menuButtonHidden,
-              )}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              className={classes.title}
-            >
-              Dashboard Admin
-            </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-        <Drawer
-          variant="permanent"
-          classes={{
-            paper: classNames(classes.drawerPaper, !this.state.open && classes.drawerPaperClose),
-          }}
-          open={this.state.open}
-        >
-          <div className={classes.toolbarIcon}>
-            <IconButton onClick={this.handleDrawerClose}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </div>
-          <Divider />
-          <List>{mainListItems}</List>
-          <Divider />
-          <List>{secondaryListItems}</List>
-        </Drawer>
-        <main className={classes.content}>
-          <div className={classes.appBarSpacer} />
-          <Typography variant="h4" gutterBottom component="h2">
-            Orders
-          </Typography>
-          <Typography component="div" className={classes.chartContainer}>
-            <LineChart />
-          </Typography>
-          <Typography variant="h4" gutterBottom component="h2">
-            Products
-          </Typography>
-          <div className={classes.tableContainer}>
-            <Table />
-          </div>
-        </main>
-      </div>
-    );
-  }
+        );
+    }
 }
 
-DashboardAdmin.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default withStyles(styles)(DashboardAdmin);
+export default DashboardAdmin;
