@@ -14,46 +14,46 @@ import Admins from './components/Users/Admins';
 import Students from './components/Users/Students';
 import TicketApp from "./components/Dashboard/ListItems.js/Ticket";
 
-const apiEndpoint = 'https://devdeskqueue-be.herokuapp.com/api/';
+// const apiEndpoint = 'https://devdeskqueue-be.herokuapp.com/api/';
 
 
 
 class App extends Component {
 
 
-// navigation and side bar
-  state = {
-    // sideMenuOpen: false
-    posts: []
-};
+// // navigation and side bar
+//   state = {
+//     // sideMenuOpen: false
+//     posts: []
+// };
 
-async componentDidMount() {
-  const { data: posts } = await axios.get(apiEndpoint);
-  this.setState({ posts });
-}
+// async componentDidMount() {
+//   const { data: posts } = await axios.get(apiEndpoint);
+//   this.setState({ posts });
+// }
 
-handleAdd = async () => {
-    const obj = { title: 'a', body: 'b' };
-    const { data: post } = await axios.post(apiEndpoint, obj);
-    const posts = [post, ...this.state.posts];
-    this.setState({ posts });
-};
+// handleAdd = async () => {
+//     const obj = { title: 'a', body: 'b' };
+//     const { data: post } = await axios.post(apiEndpoint, obj);
+//     const posts = [post, ...this.state.posts];
+//     this.setState({ posts });
+// };
 
-handleUpdate = async post => {
-    post.title = 'updated title';
-    const { data } = await axios.put(apiEndpoint + '/' + post.id, post);
-    // axios.patch(apiEndpoint + '/' + post.id, {title: post.title});
-    const posts = [...this.state.posts];
-    const index = posts.indexOf(post);
-    posts[index] = post;
-    this.setState({ posts });
-};
+// handleUpdate = async post => {
+//     post.title = 'updated title';
+//     const { data } = await axios.put(apiEndpoint + '/' + post.id, post);
+//     // axios.patch(apiEndpoint + '/' + post.id, {title: post.title});
+//     const posts = [...this.state.posts];
+//     const index = posts.indexOf(post);
+//     posts[index] = post;
+//     this.setState({ posts });
+// };
 
-handleDelete = async post => {
-    await axios.delete(apiEndpoint + '/' + post.id);
-    const posts = this.state.posts.filter(p => p.id !== post.id);
-    this.setState({ posts });
-};
+// handleDelete = async post => {
+//     await axios.delete(apiEndpoint + '/' + post.id);
+//     const posts = this.state.posts.filter(p => p.id !== post.id);
+//     this.setState({ posts });
+// };
 
   sideToggleClickHandler = () => {
     this.setState((prevState) => {
@@ -95,4 +95,6 @@ handleDelete = async post => {
   }
 }
 
+
 export default App;
+
