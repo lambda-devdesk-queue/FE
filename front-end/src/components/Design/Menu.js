@@ -18,7 +18,6 @@ const Menu = props => {
       </NavLogo>
       <div>
         <a href="https://hopeful-kilby-8fc86d.netlify.com/">Home</a>
-        <NavLink to="/tickets">Tickets</NavLink>
         <NavLink onClick={() => props.logout()} to="/">
           {props.isLoggedIn ? "Logout" : "Login"}
         </NavLink>

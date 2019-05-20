@@ -5,7 +5,8 @@ import Design from "./components/Design";
 import Login from "./components/Login";
 import LoginAdmin from "./components/LoginAdmin";
 import PrivateRoute from "./components/PrivateRoute";
-import users from "./Users/user";
+import student from "./Users/student";
+import admin from "./Users/admin";
 import SignUp from "./components/SignUp";
 import SignUpAdmin from "./components/SignUpAdmin";
 import Form from "./components/TicketStructure.js/Form";
@@ -32,7 +33,8 @@ function App() {
         />
         <PrivateRoute path="/all-tickets" component={AllTickets} />
         <PrivateRoute path="/edit/:id" component={EditTicket} />
-        <PrivateRoute exact path="/tickets" component={users} />
+        <PrivateRoute exact path="/tickets" component={student} />
+        <PrivateRoute exact path="/tickets-a" component={admin} />
         <Route exact path="/sign-up" component={SignUp} />
         <Route exact path="/sign-up-a" component={SignUpAdmin} />
       </Design>

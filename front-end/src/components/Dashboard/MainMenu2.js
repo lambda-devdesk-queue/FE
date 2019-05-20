@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { DashNav } from "../../Helper";
 import AvatarCard from "./AvatarCard";
 
-const MainMenu = props => {
+const MainMenu2 = props => {
   return (
     <DashNav className="dash-panel">
       <AvatarCard user={props.user} />
@@ -15,6 +15,9 @@ const MainMenu = props => {
         </Link>
         <Link to="/all-tickets">
           {props.user.isAdmin ? <li>Claimed Tickets</li> : <li>My Tickets</li>}
+        </Link>
+        <Link to="/tickets">
+          <li>All Tickets</li>
         </Link>
       </ul>
     </DashNav>
@@ -27,4 +30,4 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(MainMenu);
+export default connect(mapStateToProps)(MainMenu2);
