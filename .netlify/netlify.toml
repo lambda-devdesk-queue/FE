@@ -10,6 +10,11 @@
   command = "yarn build"
   publish = "front-end/build/"
 
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+
 # Production context: All deploys to the main
 # repository branch will inherit these settings.
 [context.production]
