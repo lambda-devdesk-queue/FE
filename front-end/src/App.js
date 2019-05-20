@@ -1,100 +1,39 @@
-import React, { Component } from 'react';
-import Form from "./components/Form/Form";
-import Login from "./components/Login/Login";
-import LoginAdmin from "./components/Login/LoginAdmin";
-import Navbar from './components/Navigation/Navbar';
-import Sidemenu from './components/Navigation/Sidemenu';
-import Background from './components/Background/Background';
-import './App.css'
+import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Dashboard from './components/Dashboard/Dashboard';
-import DashboardAdmin from './components/Dashboard/DashboardAdmin';
-import axios from 'axios';
-import Admins from './components/Users/Admins';
-import Students from './components/Users/Students';
-import TicketApp from "./components/Dashboard/ListItems.js/Ticket";
 
-// const apiEndpoint = 'https://devdeskqueue-be.herokuapp.com/api/';
+import Design from "./components/Design";
+import LogIn from "./components/LogIn";
+import PrivateRoute from "./components/PrivateRoute";
+import users from "./Users/user";
+import SignUp from "./components/SignUp";
+import Form from "./components/TicketStructure.js/Form";
+import Card from "./components/TicketStructure.js/Card";
+import Home from "./components/Home";
+import EditTicket from "./components/TicketStructure.js/EditTicket";
+import AllTickets from "./components/TicketStructure.js/AllTickets";
 
-
-
-class App extends Component {
-
-
-// // navigation and side bar
-//   state = {
-//     // sideMenuOpen: false
-//     posts: []
-// };
-
-// async componentDidMount() {
-//   const { data: posts } = await axios.get(apiEndpoint);
-//   this.setState({ posts });
-// }
-
-// handleAdd = async () => {
-//     const obj = { title: 'a', body: 'b' };
-//     const { data: post } = await axios.post(apiEndpoint, obj);
-//     const posts = [post, ...this.state.posts];
-//     this.setState({ posts });
-// };
-
-// handleUpdate = async post => {
-//     post.title = 'updated title';
-//     const { data } = await axios.put(apiEndpoint + '/' + post.id, post);
-//     // axios.patch(apiEndpoint + '/' + post.id, {title: post.title});
-//     const posts = [...this.state.posts];
-//     const index = posts.indexOf(post);
-//     posts[index] = post;
-//     this.setState({ posts });
-// };
-
-// handleDelete = async post => {
-//     await axios.delete(apiEndpoint + '/' + post.id);
-//     const posts = this.state.posts.filter(p => p.id !== post.id);
-//     this.setState({ posts });
-// };
-
-  sideToggleClickHandler = () => {
-    this.setState((prevState) => {
-      return {sideMenuOpen: !prevState.sideMenuOpen};
-    });
-  };
-
-  backgroundClickHandler = () => {
-    this.setState({sideMenuOpen: false});
-  };
-
-  render() {
-
-    let background;
-    if (this.state.sideMenuOpen) {
-      background = <Background click={this.backgroundClickHandler}/>
-    }
-    return (
-      <Router>
-        <div style={{height: '100%'}}>
-        <Navbar sideClickHandler={this.sideToggleClickHandler}/>
-        <Sidemenu show={this.state.sideMenuOpen} />
-        {/* <Form /> */}
-        {background}
-        <main style={{marginTop: '64px'}}>
-        </main>
-        <Route exact path="/form" component={Form} />
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/loginadmin" component={LoginAdmin} />
-        <Route exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/dashboardadmin" component={DashboardAdmin} />
-        <Route exact path="/admins" component={Admins} />
-        <Route exact path="/students" component={Students} />
-        <Route path="/questionlist" component={TicketApp}/>
-      </div>
-      </Router>
-
-    );
-  }
+function App() {
+  return (
+    <Router>
+      <Design>
+        <Route path="/" exact component={Home} />
+        <Route path="/login" component={LogIn} />
+        <PrivateRoute
+          path="/tickets/:id"
+          exact
+          component={props => <Card {...props} />}
+        />
+        <PrivateRoute
+          path="/new-ticket"
+          component={props => <Form {...props} />}
+        />
+        <PrivateRoute path="/all-tickets" component={AllTickets} />
+        <PrivateRoute path="/edit/:id" component={EditTicket} />
+        <PrivateRoute exact path="/tickets" component={users} />
+        <Route exact path="/sign-up" component={SignUp} />
+      </Design>
+    </Router>
+  );
 }
 
-
 export default App;
-
