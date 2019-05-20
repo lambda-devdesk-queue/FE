@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Design from "./components/Design";
-import LogIn from "./components/LogIn";
+import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import users from "./Users/user";
 import SignUp from "./components/SignUp";
@@ -17,7 +17,7 @@ function App() {
     <Router>
       <Design>
         <Route path="/" exact component={Home} />
-        <Route path="/login" component={LogIn} />
+        <Route path="/login" component={Login} />
         <PrivateRoute
           path="/tickets/:id"
           exact
