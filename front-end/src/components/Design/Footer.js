@@ -7,7 +7,7 @@ const Footer = () => {
   return (
     <SFooter>
       <p>
-        &copy; <NavLink to="/">DevDesk Queue {"  "}</NavLink>
+        &copy; <NavLink to="/">DevDeskQue {"  "}</NavLink>
         {"   "} 2019. All Rights Reserved.
       </p>
     </SFooter>

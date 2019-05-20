@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import { logout } from "../../Actions";
-import { MenuH1, MenuNav, NavLogo } from "../../Helper/index";
+import { MenuNav, NavLogo } from "../../Helper/index";
 
 const Menu = props => {
   return (
@@ -12,15 +12,14 @@ const Menu = props => {
       <div>
       <img
             src={require(`../../assets/LOGO2.png`)}
-            alt="Lambda Avatar"
+            alt="DevDeskQue"
           />
-        {/* <MenuH1>DevDesk Queue</MenuH1> */}
       </div>
       </NavLogo>
       <div>
         <a href="https://hopeful-kilby-8fc86d.netlify.com/">Home</a>
         <NavLink to="/tickets">Tickets</NavLink>
-        <NavLink onClick={() => props.logout()} to="/login">
+        <NavLink onClick={() => props.logout()} to="/Login">
           {props.isLoggedIn ? "Logout" : "Login"}
         </NavLink>
       </div>

@@ -59,7 +59,7 @@ export const MenuH1 = styled.h1`
 //Styles for the Submit a Ticket View
 
 export const TicketH1 = styled.h1`
-  color: #fff;
+  color: #258EA6;
   text-align: center;
   font-size: 2rem;
   margin: 1rem 0;
