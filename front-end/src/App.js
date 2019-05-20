@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Design from "./components/Design";
 import Login from "./components/Login";
+import LoginAdmin from "./components/LoginAdmin";
 import PrivateRoute from "./components/PrivateRoute";
 import users from "./Users/user";
 import SignUp from "./components/SignUp";
+import SignUpAdmin from "./components/SignUpAdmin";
 import Form from "./components/TicketStructure.js/Form";
 import Card from "./components/TicketStructure.js/Card";
 import Home from "./components/Home";
@@ -18,6 +20,7 @@ function App() {
       <Design>
         <Route path="/" exact component={Home} />
         <Route path="/login" component={Login} />
+        <Route path="/loginadmin" component={LoginAdmin} />
         <PrivateRoute
           path="/tickets/:id"
           exact
@@ -31,6 +34,7 @@ function App() {
         <PrivateRoute path="/edit/:id" component={EditTicket} />
         <PrivateRoute exact path="/tickets" component={users} />
         <Route exact path="/sign-up" component={SignUp} />
+        <Route exact path="/sign-up-a" component={SignUpAdmin} />
       </Design>
     </Router>
   );

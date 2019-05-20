@@ -82,7 +82,19 @@ name {
   width: 49%;
 }
 
-  
+link1 {
+  a {
+    color: white
+  }
+  a:hover {
+      color: lightgrey
+    }
+}
+
+  student {
+    tex-decoration:none;
+    color: white;
+  }
   h1 {
     text-align: center;
     paddding-bottom: 20px;
@@ -99,6 +111,7 @@ name {
     color: #08addd;
     text-decoration: none;
   }
+  
   form {
     width: 100%;
     display: flex;
@@ -145,6 +158,7 @@ name {
     letter-spacing: 1px;
     margin-bottom: 0.25em;
   }
+
   .extra {
     margin-top: 1rem;
     text-align: center;
@@ -351,6 +365,10 @@ export const ItemDiv = styled.div`
         text-align: center;
         i {
           cursor: pointer;
+          color: #258EA6;
+        }
+        i:hover {
+          color:red;
         }
       }
     }

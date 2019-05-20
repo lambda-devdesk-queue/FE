@@ -35,7 +35,7 @@ const Item = props => {
             {excerptHelper(props.description)}
           </p>
         </div>
-        <div className="delete-item">
+        <div className="delete-item"> 
           <i
             onClick={() => props.deleteTicket(props.id)}
             className="fas fa-trash"
