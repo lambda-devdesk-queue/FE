@@ -20,7 +20,7 @@ function App() {
       <Design>
         <Route path="/" exact component={Home} />
         <Route path="/login" component={Login} />
-        <Route path="/loginadmin" component={LoginAdmin} />
+        <Route path="/login-a" component={LoginAdmin} />
         <PrivateRoute
           path="/tickets/:id"
           exact

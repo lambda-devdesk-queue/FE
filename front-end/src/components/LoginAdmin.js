@@ -5,7 +5,7 @@ import { LoginForm} from "../Helper";
 import { connect } from "react-redux";
 import { login } from "../Actions";
 
-class Login extends Component {
+class LoginAdmin extends Component {
   state = { credentials: { username: "", password: "" } };
 
   handleChange = e => {
@@ -83,4 +83,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { login }
-)(Login);
+)(LoginAdmin);
