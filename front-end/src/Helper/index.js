@@ -316,8 +316,17 @@ export const ItemDiv = styled.div`
     justify-content: space-between;
     align-content: space-between;
     background: white;
+    box-shadow: 0 0 5em -1em black;
+    transition: all, var(--transition-time);
+    position: relative;
+    overflow: hidden;
+    border: 10px solid #ccc;
+    transform-origin: top left;
+    transition: all, var(--transition-time);
+    transition-timing-function: ease-in-out;
     :hover {
-      transform: scale(1.01);
+      background: var(--color);
+      color: white;
     }
     .top-section {
       display: flex;
