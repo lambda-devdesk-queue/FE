@@ -268,7 +268,7 @@ export const DashboardDiv = styled.div`
   }
   .dash-main {
     width: 90%;
-    background: #55596d;
+    background: #616161;
   }
   .profile-panel {
     text-align: center;
@@ -288,7 +288,7 @@ export const DashNav = styled.nav`
     margin: 0 auto;
     width: 95%;
     margin-bottom: 5px;
-    background: #55596d;
+    background: #616161;
     :hover {
       background: #1e50ee;
     }
@@ -473,8 +473,13 @@ export const CardDiv = styled.div`
 
 // Styles for the Profile Card
 export const ProfileDiv = styled.div`
-  color: black;
+  color: white;
   margin: 2rem 0;
   line-height: 1.5;
-`;
+  border: 3px solid rgb(211, 211, 211);
+  
+  image {
+    height: 56px;
+  }
+  `;
 

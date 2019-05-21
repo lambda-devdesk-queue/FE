@@ -16,6 +16,9 @@ const MainMenu = props => {
         <Link to="/all-tickets">
           {props.user.isAdmin ? <li>Claimed Tickets</li> : <li>My Tickets</li>}
         </Link>
+        <Link to="/tickets">
+          <li>All Tickets</li>
+        </Link>
       </ul>
     </DashNav>
   );

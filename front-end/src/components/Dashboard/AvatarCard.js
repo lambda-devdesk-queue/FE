@@ -1,13 +1,17 @@
 
 import React from "react";
-
 import { ProfileDiv } from "../../Helper";
 
 const AvatarCard = props => {
   return (
+    <div class="w3-container">
+      <div class="w3-card-4 w3-dark-grey">
     <ProfileDiv className="profile-panel">
       <div className="profile-header">
-        <img src="" alt="" />
+      <img className="image"
+            src={require(`../../assets/img_avatar.png`)}
+            alt="DevDeskQue"
+          />
         <h1>
           {props.user.username[0].toUpperCase()}
           {props.user.username.slice(1, props.user.username.length)}
@@ -22,6 +26,8 @@ const AvatarCard = props => {
         <p>ID: {props.user.user_id}</p>
       </div>
     </ProfileDiv>
+    </div>
+    </div>
   );
 };
 
