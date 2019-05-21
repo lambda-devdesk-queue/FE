@@ -68,7 +68,7 @@ export const TicketH1 = styled.h1`
 //Styles for the Login Form
 
 export const LoginForm = styled.form`
-  width: 400px;
+  width: 500px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
