@@ -290,7 +290,7 @@ export const DashNav = styled.nav`
     margin-bottom: 5px;
     background: #616161;
     :hover {
-      background: #1e50ee;
+      background: #258ea6;
     }
   }
   a {
